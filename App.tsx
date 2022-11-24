@@ -13,8 +13,9 @@ import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 
 // import {PhotoView} from './src/photos-with-swatches';
 // import {ShowFlag} from './src/small-features';
-// import {CustomTable, RNtcTable} from './src/tables';
-import {CardList} from './src/cardlist-tutorial';
+import {CustomTable, RNtcTable} from './src/tables';
+// import {CardList} from './src/cardlist-tutorial';
+// import {CardList2} from './src/cardlist2-tutorial';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -27,11 +28,12 @@ const App = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      {/* <CustomTable /> */}
-      {/* <RNtcTable /> */}
+      <CustomTable />
+      <RNtcTable />
       {/* <ShowFlag /> */}
       {/* <PhotoView /> */}
-      <CardList />
+      {/* <CardList /> */}
+      {/* <CardList2 /> */}
     </SafeAreaView>
   );
 };
