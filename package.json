@@ -12,6 +12,8 @@
   "dependencies": {
     "react": "18.0.0",
     "react-native": "0.69.1",
+    "react-native-copilot": "^2.5.1",
+    "react-native-svg": "^13.6.0",
     "react-native-table-component": "^1.2.2"
   },
   "devDependencies": {

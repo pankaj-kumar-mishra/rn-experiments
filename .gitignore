@@ -63,4 +63,11 @@ buck-out/
 /vendor/bundle/
 
 # Custom
-src/
+*/counter
+*/contacts
+
+# */tables
+*/small-features
+*/small-features
+*/photos-with-swatches
+*/cardlist-tutorial
