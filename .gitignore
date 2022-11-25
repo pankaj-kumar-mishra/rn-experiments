@@ -67,8 +67,7 @@ buck-out/
 */contacts
 
 # */tables
-*/small-features
-*/small-features
+# */show-flag
 */photos-with-swatches
 */cardlist-tutorial
 */cardlist2-tutorial
