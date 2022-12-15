@@ -12,10 +12,11 @@ import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 
 // import {PhotoView} from './src/photos-with-swatches';
-import {ShowFlag} from './src/show-flag';
+// import {ShowFlag} from './src/show-flag';
 // import {CustomTable, RNtcTable} from './src/tables';
 // import {CardList} from './src/cardlist-tutorial';
 // import {CardList2} from './src/cardlist2-tutorial';
+import {ScrollToTopView} from './src/scrollToTop';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,10 +31,11 @@ const App = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       {/* <CustomTable />
       <RNtcTable /> */}
-      <ShowFlag />
+      {/* <ShowFlag /> */}
       {/* <PhotoView /> */}
       {/* <CardList /> */}
       {/* <CardList2 /> */}
+      <ScrollToTopView />
     </SafeAreaView>
   );
 };
