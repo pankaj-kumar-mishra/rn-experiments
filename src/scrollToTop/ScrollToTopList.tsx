@@ -3,7 +3,8 @@ import {
   StyleSheet,
   View,
   Text,
-  ScrollView,
+  FlatList,
+  ListRenderItem,
   Dimensions,
   NativeSyntheticEvent,
   NativeScrollEvent,
@@ -11,6 +12,7 @@ import {
 } from 'react-native';
 import {Card, BottomBtn} from './components';
 const {height} = Dimensions.get('screen');
+
 interface Props {}
 
 const data = [
@@ -19,13 +21,13 @@ const data = [
   42, 43, 44, 45, 46, 47, 48, 49, 50,
 ];
 
-const ScrollToTopView: FC<Props> = (): JSX.Element => {
-  const scrollViewRef = useRef<ScrollView>(null);
+const ScrollToTopList: FC<Props> = (): JSX.Element => {
+  const flatListRef = useRef<FlatList>(null);
   const [contentVerticalOffset, setContentVerticalOffset] = useState(0);
   const CONTENT_OFFSET_THRESHOLD = 0;
 
   const handleScrollToTop = () => {
-    scrollViewRef.current?.scrollTo({y: 0});
+    flatListRef.current?.scrollToOffset({offset: 0});
   };
 
   const handleOnScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -40,27 +42,27 @@ const ScrollToTopView: FC<Props> = (): JSX.Element => {
   // console.log('Height', height);
   // console.log('Vertical Offset', contentVerticalOffset);
 
+  const renderItem: ListRenderItem<number> = ({item}) => (
+    <Card text={item.toString()} />
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>ScrollView (Scroll To Top)</Text>
+        <Text style={styles.headerText}>FlatList (Scroll To Top)</Text>
       </View>
-      <ScrollView
-        ref={scrollViewRef}
-        onScroll={handleOnScroll}
-        scrollEventThrottle={16}
-        style={styles.listContainer}
-        showsVerticalScrollIndicator={false}>
-        {data.map((item, index) => {
-          return (
-            <Card
-              key={index.toString()}
-              text={item.toString()}
-              cardStyle={styles.card}
-            />
-          );
-        })}
-      </ScrollView>
+      <View style={styles.listContainer}>
+        <FlatList
+          ref={flatListRef}
+          onScroll={handleOnScroll}
+          data={data}
+          keyExtractor={(item, index) => index.toString()}
+          numColumns={2}
+          columnWrapperStyle={styles.columnWrapperStyle}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => console.log('Clicked')}
@@ -101,10 +103,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 10,
   },
-  card: {
-    width: '100%',
-    marginBottom: 5,
+  columnWrapperStyle: {
+    justifyContent: 'space-between',
+    marginBottom: 6,
   },
 });
 
-export default ScrollToTopView;
+export default ScrollToTopList;

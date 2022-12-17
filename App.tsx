@@ -16,7 +16,11 @@ import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 // import {CustomTable, RNtcTable} from './src/tables';
 // import {CardList} from './src/cardlist-tutorial';
 // import {CardList2} from './src/cardlist2-tutorial';
-import {ScrollToTopView} from './src/scrollToTop';
+import {
+  ScrollToTopView,
+  ScrollToTopList,
+  ShowHideOnScroll,
+} from './src/scrollToTop';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -35,7 +39,9 @@ const App = () => {
       {/* <PhotoView /> */}
       {/* <CardList /> */}
       {/* <CardList2 /> */}
-      <ScrollToTopView />
+      {/* <ScrollToTopView /> */}
+      {/* <ScrollToTopList /> */}
+      <ShowHideOnScroll />
     </SafeAreaView>
   );
 };
