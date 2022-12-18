@@ -20,6 +20,8 @@ import {
   ScrollToTopView,
   ScrollToTopList,
   ShowHideOnScroll,
+  ScrollToTopView2,
+  ScrollToTopList2,
 } from './src/scrollToTop';
 
 const App = () => {
@@ -41,7 +43,9 @@ const App = () => {
       {/* <CardList2 /> */}
       {/* <ScrollToTopView /> */}
       {/* <ScrollToTopList /> */}
-      <ShowHideOnScroll />
+      {/* <ShowHideOnScroll /> */}
+      {/* <ScrollToTopView2 /> */}
+      <ScrollToTopList2 />
     </SafeAreaView>
   );
 };
