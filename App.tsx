@@ -11,7 +11,7 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 
-// import {PhotoView} from './src/photos-with-swatches';
+import {PhotoView} from './src/photos-with-swatches';
 // import {ShowFlag} from './src/show-flag';
 // import {CustomTable, RNtcTable} from './src/tables';
 // import {CardList} from './src/cardlist-tutorial';
@@ -38,14 +38,14 @@ const App = () => {
       {/* <CustomTable />
       <RNtcTable /> */}
       {/* <ShowFlag /> */}
-      {/* <PhotoView /> */}
+      <PhotoView />
       {/* <CardList /> */}
       {/* <CardList2 /> */}
       {/* <ScrollToTopView /> */}
       {/* <ScrollToTopList /> */}
       {/* <ShowHideOnScroll /> */}
       {/* <ScrollToTopView2 /> */}
-      <ScrollToTopList2 />
+      {/* <ScrollToTopList2 /> */}
     </SafeAreaView>
   );
 };
