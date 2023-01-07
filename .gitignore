@@ -69,6 +69,6 @@ buck-out/
 # */tables
 # */show-flag
 */photos-with-swatches
-*/cardlist-tutorial
+# */cardlist-tutorial
 */cardlist2-tutorial
 # */scrollToTop
