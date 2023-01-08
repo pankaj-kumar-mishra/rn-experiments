@@ -26,7 +26,7 @@ const CardList: FC<Props> = (): JSX.Element => {
     if (index < 6) {
       return (
         <TutorialModal
-          isVisible={index === 3}
+          isVisible={index === 3} // PK change active card index to view modal
           renderContent={tutorialProps => (
             <TutorialCard {...tutorialProps} itemIndex={index} />
           )}>
