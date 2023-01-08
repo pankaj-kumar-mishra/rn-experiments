@@ -42,16 +42,15 @@ const CardList: FC<Props> = (): JSX.Element => {
       <View style={styles.header}>
         <Text style={styles.headerText}>CardList With Tutorial</Text>
       </View>
-      <View style={styles.container}>
-        <FlatList
-          data={data}
-          keyExtractor={(item, index) => index.toString()}
-          numColumns={2}
-          columnWrapperStyle={styles.columnWrapperStyle}
-          renderItem={renderItem}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
+      <FlatList
+        data={data}
+        keyExtractor={(item, index) => index.toString()}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapperStyle}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+        style={styles.flatList}
+      />
     </>
   );
 };
@@ -63,13 +62,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 5,
-    zIndex: -1,
   },
   headerText: {
     fontSize: 20,
   },
-  container: {
-    flex: 1,
+  flatList: {
     paddingHorizontal: 10,
   },
   columnWrapperStyle: {

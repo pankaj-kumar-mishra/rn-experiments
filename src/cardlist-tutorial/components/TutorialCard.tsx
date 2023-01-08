@@ -11,7 +11,7 @@ interface Props {
 const TutorialCard: FC<Props> = ({
   children,
   position,
-  // itemIndex,
+  itemIndex,
 }): JSX.Element => {
   return (
     <>
@@ -20,7 +20,7 @@ const TutorialCard: FC<Props> = ({
         containerCard: [
           {
             ...styles.tutorialCard,
-            top: position.top - 20,
+            top: position.top + 25,
             left: position.left - 20,
           },
         ],
@@ -31,10 +31,10 @@ const TutorialCard: FC<Props> = ({
 
 const styles = StyleSheet.create({
   tutorialCard: {
-    elevation: 5,
-    shadowOffset: {width: 5, height: 5},
-    shadowColor: 'goldenrod',
-    shadowRadius: 2,
+    elevation: 3,
+    shadowOffset: {width: 4, height: 4},
+    shadowColor: '#fff',
+    shadowRadius: 4,
     shadowOpacity: 0.3,
   },
 });

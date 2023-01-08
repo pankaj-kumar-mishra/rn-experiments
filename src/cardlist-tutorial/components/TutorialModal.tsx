@@ -5,7 +5,7 @@ import React, {
   ReactElement,
   useRef,
 } from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
 import NativeModal from 'react-native-modal';
 
 type RenderContentType = {
@@ -68,6 +68,11 @@ const TutorialModal: FC<PropsWithChildren<Props>> = ({
         animationOut="fadeOut"
         isVisible={visible}>
         <View style={styles.container}>
+          {/* PK "Pressable" added to handle backdrop inside container */}
+          <Pressable
+            onPress={handleModalClose}
+            style={styles.absoluteContainer}
+          />
           {position && renderContent?.({children, position})}
         </View>
       </NativeModal>
@@ -78,6 +83,9 @@ const TutorialModal: FC<PropsWithChildren<Props>> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  absoluteContainer: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
 

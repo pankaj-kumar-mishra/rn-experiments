@@ -9,7 +9,8 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {StatusBar, useColorScheme} from 'react-native';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 // import {PhotoView} from './src/photos-with-swatches';
 // import {ShowFlag} from './src/show-flag';
@@ -33,20 +34,22 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      {/* <CustomTable />
+    <SafeAreaProvider>
+      <SafeAreaView style={backgroundStyle}>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        {/* <CustomTable />
       <RNtcTable /> */}
-      {/* <ShowFlag /> */}
-      {/* <PhotoView /> */}
-      <CardList />
-      {/* <CardList2 /> */}
-      {/* <ScrollToTopView /> */}
-      {/* <ScrollToTopList /> */}
-      {/* <ShowHideOnScroll /> */}
-      {/* <ScrollToTopView2 /> */}
-      {/* <ScrollToTopList2 /> */}
-    </SafeAreaView>
+        {/* <ShowFlag /> */}
+        {/* <PhotoView /> */}
+        <CardList />
+        {/* <CardList2 /> */}
+        {/* <ScrollToTopView /> */}
+        {/* <ScrollToTopList /> */}
+        {/* <ShowHideOnScroll /> */}
+        {/* <ScrollToTopView2 /> */}
+        {/* <ScrollToTopList2 /> */}
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
