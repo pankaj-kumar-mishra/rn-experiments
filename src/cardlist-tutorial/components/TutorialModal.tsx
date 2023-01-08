@@ -33,7 +33,6 @@ const TutorialModal: FC<PropsWithChildren<Props>> = ({
     width: number;
     height: number;
   }>(null);
-  // PK position "width" and "height" not required here, If needed we will use later.
 
   const handleOnLayout = () => {
     if (isVisible) {
@@ -44,7 +43,7 @@ const TutorialModal: FC<PropsWithChildren<Props>> = ({
           width,
           height,
         };
-        console.log('>>>>position', data);
+        // console.log('>>>>position', data);
         setPosition(data);
       });
     }
