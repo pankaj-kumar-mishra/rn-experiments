@@ -1,11 +1,11 @@
 import React, {
   FC,
   useState,
-  useEffect,
+  useRef,
   PropsWithChildren,
   ReactElement,
 } from 'react';
-import {StyleSheet, Modal, View, Pressable, SafeAreaView} from 'react-native';
+import {StyleSheet, Modal, View, Pressable} from 'react-native';
 
 type RenderContentType = {
   children: ReactElement;
@@ -15,54 +15,69 @@ type RenderContentType = {
 interface Props {
   children: ReactElement;
   renderContent: (props: RenderContentType) => ReactElement;
+  isVisible: boolean;
 }
 
-const TutorialModal: FC<PropsWithChildren<Props>> = ({
+const TutorialModal2: FC<PropsWithChildren<Props>> = ({
   children,
   renderContent,
+  isVisible,
 }): JSX.Element => {
-  const [visible, setVisible] = useState(false);
+  const elementRef = useRef<View>(null);
 
-  useEffect(() => {
-    setVisible(true);
-  }, []);
+  const [visible, setVisible] = useState<boolean>(isVisible);
+  const [position, setPosition] = useState<null | {
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+  }>(null);
+
+  const handleOnLayout = () => {
+    if (isVisible) {
+      elementRef.current?.measureInWindow((x, y, width, height) => {
+        const data = {
+          top: y,
+          left: x,
+          width,
+          height,
+        };
+        // console.log('>>>>position', data);
+        setPosition(data);
+      });
+    }
+  };
 
   const handleModalClose = () => {
     setVisible(false);
   };
 
-  const tempPosition = {
-    top: 100,
-    left: 100,
-    width: 200,
-    height: 2000,
-  };
-
   return (
-    <Modal animationType="fade" visible={visible} transparent>
-      {/* <View collapsable={false}>{children}</View> */}
-      <SafeAreaView style={styles.safeAreaView}>
-        <View style={styles.content}>
-          {renderContent?.({children, position: tempPosition})}
-        </View>
-        <Pressable onPress={handleModalClose} style={styles.container} />
-      </SafeAreaView>
-    </Modal>
+    <>
+      <View ref={elementRef} onLayout={handleOnLayout} collapsable={false}>
+        {children}
+      </View>
+      <Modal
+        animationType="fade"
+        onLayout={handleOnLayout}
+        visible={visible}
+        transparent>
+        {/* PK "Pressable" added to handle backdrop inside container */}
+        <Pressable
+          onPress={handleModalClose}
+          style={styles.absoluteContainer}
+        />
+        {position && renderContent?.({children, position})}
+      </Modal>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  safeAreaView: {
-    flex: 1,
-  },
-  container: {
+  absoluteContainer: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
-  content: {
-    // zIndex: 1,
-    backgroundColor: 'red',
-  },
 });
 
-export default TutorialModal;
+export default TutorialModal2;

@@ -11,26 +11,26 @@ interface Props {
   itemIndex: number;
 }
 
-const TutorialCard: FC<Props> = ({
+const TutorialCard2: FC<Props> = ({
   children,
   position,
   itemIndex,
 }): JSX.Element => {
   const isEvenIndex = itemIndex % 2 === 0;
   const leftPosition = isEvenIndex
-    ? position.width
+    ? position.width + 15
     : position.left - position.width;
 
   const headerPositionStyle = {
-    top: position.top + (isIOS ? 35 : -15),
+    top: position.top + (isIOS ? 50 : 5),
     left: leftPosition,
   };
   const bodyPositionStyle = {
-    top: position.top + position.height / (isIOS ? 1.7 : 2.7),
+    top: position.top + position.height / (isIOS ? 1.4 : 2),
     left: leftPosition,
   };
   const footerPositionStyle = {
-    top: position.top + position.height + (isIOS ? 5 : -45),
+    top: position.top + position.height + (isIOS ? 25 : -25),
     left: leftPosition,
   };
 
@@ -41,8 +41,8 @@ const TutorialCard: FC<Props> = ({
         containerCard: [
           {
             ...styles.tutorialCard,
-            top: position.top + (isIOS ? 25 : -22),
-            left: position.left - 20,
+            top: position.top + (isIOS ? 45 : 0),
+            left: position.left,
           },
         ],
       })}
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TutorialCard;
+export default TutorialCard2;
