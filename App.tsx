@@ -16,7 +16,6 @@ import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 // import {ShowFlag} from './src/show-flag';
 // import {CustomTable, RNtcTable} from './src/tables';
 import {CardList} from './src/cardlist-tutorial';
-// import {CardList2} from './src/cardlist2-tutorial';
 // import {
 //   ScrollToTopView,
 //   ScrollToTopList,
@@ -42,7 +41,6 @@ const App = () => {
         {/* <ShowFlag /> */}
         {/* <PhotoView /> */}
         <CardList />
-        {/* <CardList2 /> */}
         {/* <ScrollToTopView /> */}
         {/* <ScrollToTopList /> */}
         {/* <ShowHideOnScroll /> */}

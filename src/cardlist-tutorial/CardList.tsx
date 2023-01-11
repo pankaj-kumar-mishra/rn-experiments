@@ -1,6 +1,12 @@
 import React, {FC} from 'react';
 import {StyleSheet, View, Text, FlatList, ListRenderItem} from 'react-native';
-import {Card, TutorialCard, TutorialModal} from './components';
+import {
+  Card,
+  TutorialModal,
+  TutorialCard,
+  TutorialModal2,
+  TutorialCard2,
+} from './components';
 
 interface Props {}
 
@@ -37,6 +43,21 @@ const CardList: FC<Props> = (): JSX.Element => {
     return <Card item={item} />;
   };
 
+  const renderItem2: ListRenderItem<DataType> = ({item, index}) => {
+    if (index < 6) {
+      return (
+        <TutorialModal2
+          isVisible={index === 3} // PK change active card index to view modal
+          renderContent={tutorialProps => (
+            <TutorialCard2 {...tutorialProps} itemIndex={index} />
+          )}>
+          <Card item={item} />
+        </TutorialModal2>
+      );
+    }
+    return <Card item={item} />;
+  };
+
   return (
     <>
       <View style={styles.header}>
@@ -47,7 +68,7 @@ const CardList: FC<Props> = (): JSX.Element => {
         keyExtractor={(item, index) => index.toString()}
         numColumns={2}
         columnWrapperStyle={styles.columnWrapperStyle}
-        renderItem={renderItem}
+        renderItem={renderItem2}
         showsVerticalScrollIndicator={false}
         style={styles.flatList}
       />
